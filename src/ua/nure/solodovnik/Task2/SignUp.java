@@ -43,7 +43,7 @@ public class SignUp extends HttpServlet {
 		User u = new User();
 		try {
 			if (u.create(User.getSignUpParams(request))) {
-				
+				response.sendRedirect("login.jsp");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

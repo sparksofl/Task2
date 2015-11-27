@@ -8,6 +8,7 @@
 </head>
 <body>
 	all users will be listed here later
+	You are logged in as ${fullname}
 	<% /*if  current_user[id] != session[id] */ %>
 </body>
 </html>

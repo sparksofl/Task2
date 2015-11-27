@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="main.css"/>
 <title>Registration</title>
 </head>
 <body>
 	<form method="post" action="SignUp">
-        Name:<input type="text" name="uname" /><br/>
-        Password:<input type="password" name="pword" /><br/>
-        Full name:<input id="fname" type="text" name="fname" /><br/>
-        Email:<input id="email" type="email" name="email" /><br/>
-        <input type="submit" value="register" />
+        <input type="text" name="login" placeholder="Username" /><br/>
+        <input type="password" name="password" placeholder="Password" /><br/>
+        <input id="fname" type="text" name="fullname" placeholder="Full name" /><br/>
+        <input id="email" type="email" name="email" placeholder="E-mail" /><br/>
+        <input type="submit" value="Sing Up" />
     </form>
 </body>
 </html>

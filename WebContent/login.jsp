@@ -4,13 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="main.css"/>
 <title>Insert title here</title>
 </head>
 <body>
+	<c:if !"${validated}">
+		<div class="error">Invalid e-mail or password</div>
+	</c:if>
 	<form action="SingIn" method="POST">
-		<input type="text" name="login" placeholder="E-mail"/>
-		<input type="password" name="pword" placeholder="Password"/>
-		<button type="submit">Log In</button>
+		<input type="text" name="email" placeholder="E-mail"/>
+		<input type="password" name="password" placeholder="Password"/>
+		<input type="submit" value="Log In" />
 	</form>
 </body>
 </html>
