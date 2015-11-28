@@ -8,13 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if !"${validated}">
-		<div class="error">Invalid e-mail or password</div>
-	</c:if>
-	<form action="SingIn" method="POST">
-		<input type="text" name="email" placeholder="E-mail"/>
-		<input type="password" name="password" placeholder="Password"/>
-		<input type="submit" value="Log In" />
-	</form>
+	<div class="login-form">
+		<form action="SingIn" method="POST">
+			<input type="text" name="email" placeholder="E-mail"/>
+			<input type="password" name="password" placeholder="Password"/>
+			<input type="submit" value="Log In" />
+		</form>
+	</div>
 </body>
 </html>

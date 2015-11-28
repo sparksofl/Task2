@@ -28,15 +28,14 @@ public class SignIn extends HttpServlet {
 
 		try {
 			if (!u.paramIsValid("email", u.getAttr("email")) || !u.paramIsValid("password", u.getAttr("password"))) {
-				request.setAttribute("error", "Invalid email or password");
-				request.setAttribute("validated", false);
 				doGet(request, response);
 				return;
 			} else {
-				request.setAttribute("validated", true);
 				HttpSession session = request.getSession();
 				u = User.findUser(u.getAttr("email"));
 				session.setAttribute("fullname", u.getAttr("fullname"));
+				
+				session.setAttribute("allUsers", User.getAll());
 				response.sendRedirect("index.jsp");
 			}
 			

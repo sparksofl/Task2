@@ -19,12 +19,13 @@ public class User {
 		for (int i = 0; i < params.length; i++) {
 			attrs.put(temp[i], params[i]);
 		}
-		this.isAdmin = false;
+		attrs.put("isAdmin", "false");
+		//isAdmin = false;
 	}
 	
 	private static String[] loginParams = {"email", "password"};
 	private static String[] signupParams = {"login", "password", "fullname", "email"};
-	private static String[] defaultParams = {"login", "password", "fullname", "email"};
+	//private static String[] defaultParams = {"login", "password", "fullname", "email"};
 	
 	public static String[] getLoginParams(HttpServletRequest request) {
 		return getParams(request, loginParams);
@@ -70,7 +71,32 @@ public class User {
 		
 		return u;
 	}
-	private int getQueryCounter(String query) throws SQLException {
+	
+	public static User[] getAll() throws SQLException {
+		User[] users = new User[getQueryCounter("SELECT COUNT(*) FROM users;")];
+		
+		Connection c = PSQLConnection.getConnection();
+		Statement s = c.createStatement();
+		String query = "SELECT * FROM users;";
+		ResultSet rs = s.executeQuery(query);
+		
+		String[] attrs = new String[4];
+		int j = 0;
+		while(rs.next()){
+			for (int i = 1; i <= attrs.length; i++) {
+				attrs[i - 1] = rs.getString(i);
+			}
+			users[j++] = new User(attrs);
+		}
+		
+		c.close();
+		s.close();
+		rs.close();
+		
+		return users;
+	}
+	
+	private static int getQueryCounter(String query) throws SQLException {
 		Connection c = PSQLConnection.getConnection();
 		Statement s = c.createStatement();
 		ResultSet rs = s.executeQuery(query);
