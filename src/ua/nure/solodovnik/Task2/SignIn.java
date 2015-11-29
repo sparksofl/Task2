@@ -34,6 +34,7 @@ public class SignIn extends HttpServlet {
 				HttpSession session = request.getSession();
 				u = User.findUser(u.getAttr("email"));
 				session.setAttribute("fullname", u.getAttr("fullname"));
+				session.setAttribute("role", u.getAttr("isAdmin") == "true" ? "Admin" : "User");
 				
 				session.setAttribute("allUsers", User.getAll());
 				response.sendRedirect("index.jsp");

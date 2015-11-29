@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class User {
 	private HashMap<String, String> attrs = new HashMap<String, String>();
-	private boolean isAdmin;
+	// private boolean isAdmin;
 	
 	public User() {}
 	

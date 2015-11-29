@@ -9,7 +9,12 @@
 <title>Task2</title>
 </head>
 <body>
-	<span class="current">You are logged in as ${fullname}, <br/> role: ${role}</span>
+	<div class="current">You are logged in as ${role} ${fullname} <br/> 
+	<form method="get" action="LogOut">
+		<input type="hidden" name="logout" value="logout">
+		<button type="submit">Log Out</button>
+	</form>
+	</div>
 	<a href="register.jsp" class="new">Add new user</a>
 	<c:forEach var="user" items="${allUsers}">
 		<div class="user">
@@ -20,10 +25,12 @@
 				<br/>
 				E-mail: ${user.getAttr("email")}
 			</div>		
-			<div class="edit">
-				<a class="delete" href="#">Delete</a>
-				<a class="edit-user" href="#">Edit</a>
-			</div>
+			<c:if test = "${role == 'Admin'}">
+				<div class="edit">
+					<a class="delete" href="#">Delete</a>
+					<a class="edit-user" href="#">Edit</a>
+				</div>
+			</c:if>
 		</div>
 	</c:forEach>
 
