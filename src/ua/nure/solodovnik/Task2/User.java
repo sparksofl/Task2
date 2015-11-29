@@ -19,12 +19,12 @@ public class User {
 		for (int i = 0; i < params.length; i++) {
 			attrs.put(temp[i], params[i]);
 		}
-		attrs.put("isAdmin", "false");
+		// attrs.put("isAdmin", "false");
 		//isAdmin = false;
 	}
 	
 	private static String[] loginParams = {"email", "password"};
-	private static String[] signupParams = {"login", "password", "fullname", "email"};
+	private static String[] signupParams = {"login", "password", "fullname", "email", "isAdmin"};
 	//private static String[] defaultParams = {"login", "password", "fullname", "email"};
 	
 	public static String[] getLoginParams(HttpServletRequest request) {
@@ -57,7 +57,7 @@ public class User {
 		String query = "SELECT * FROM users WHERE email='" + email + "';";
 		ResultSet rs = s.executeQuery(query);
 		
-		String[] attrs = new String[4];
+		String[] attrs = new String[5];
 		while(rs.next()){
 			for (int i = 1; i <= attrs.length; i++) {
 				attrs[i - 1] = rs.getString(i);
@@ -80,7 +80,7 @@ public class User {
 		String query = "SELECT * FROM users;";
 		ResultSet rs = s.executeQuery(query);
 		
-		String[] attrs = new String[4];
+		String[] attrs = new String[5];
 		int j = 0;
 		while(rs.next()){
 			for (int i = 1; i <= attrs.length; i++) {

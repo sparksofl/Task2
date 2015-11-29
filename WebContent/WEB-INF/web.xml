@@ -9,12 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+  <!-- <servlet>
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>ua.nure.solodovnik.Task2.User</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/userURL</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 </web-app>

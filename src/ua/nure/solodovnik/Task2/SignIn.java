@@ -23,19 +23,16 @@ public class SignIn extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] params = User.getLoginParams(request);
-		User u = new User(params);
-
 		try {
+			User u = User.findUser(request.getParameter("email"));
+			
 			if (!u.paramIsValid("email", u.getAttr("email")) || !u.paramIsValid("password", u.getAttr("password"))) {
 				doGet(request, response);
 				return;
 			} else {
 				HttpSession session = request.getSession();
-				u = User.findUser(u.getAttr("email"));
 				session.setAttribute("fullname", u.getAttr("fullname"));
-				session.setAttribute("role", u.getAttr("isAdmin") == "true" ? "Admin" : "User");
-				
+				session.setAttribute("role", u.getAttr("isAdmin").equals("t") ? "Admin" : "User");
 				session.setAttribute("allUsers", User.getAll());
 				response.sendRedirect("index.jsp");
 			}

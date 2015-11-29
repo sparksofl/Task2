@@ -15,7 +15,9 @@
 		<button type="submit">Log Out</button>
 	</form>
 	</div>
-	<a href="register.jsp" class="new">Add new user</a>
+	<c:if test = "${role == 'Admin'}">
+		<a href="register.jsp" class="new">Add new user</a>
+	</c:if>
 	<c:forEach var="user" items="${allUsers}">
 		<div class="user">
 			<div class="info">
