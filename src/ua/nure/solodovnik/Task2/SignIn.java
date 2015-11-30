@@ -25,8 +25,10 @@ public class SignIn extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			User u = User.findUser("email", request.getParameter("email"));
-			
-			if (!u.paramIsValid("email", u.getAttr("email")) || !u.paramIsValid("password", u.getAttr("password"))) {
+			System.out.println("servlet pass" + User.getParam(request, "password"));
+			System.out.println("servlet email" + User.getParam(request, "email"));
+			if (!u.passIsCorrect(User.getParam(request, "password"), User.getParam(request, "email"))) {
+				request.setAttribute("invalid", true);
 				doGet(request, response);
 				return;
 			} else {

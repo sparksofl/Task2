@@ -154,4 +154,13 @@ public class User {
 		
 		return (getQueryCounter(query) > 0);
 	}
+	
+	public boolean passIsCorrect(String pass, String email) throws SQLException {
+		String query = String.format("SELECT COUNT(*) AS count FROM users WHERE password='%s' AND email='%s';", pass, email);
+		System.out.println("query  " + query);
+		System.out.println("pass  " + pass);
+		System.out.println("email  " + email);
+		System.out.println("\ncounter  " + getQueryCounter(query));
+		return (getQueryCounter(query) > 0);
+	}
 }
