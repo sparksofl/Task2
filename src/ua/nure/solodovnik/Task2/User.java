@@ -42,10 +42,10 @@ public class User {
 		return result;
 	}
 	
-	public static User findUser(String email) throws SQLException {
+	public static User findUser(String by, String value) throws SQLException {
 		Connection c = PSQLConnection.getConnection();
 		Statement s = c.createStatement();
-		String query = "SELECT * FROM users WHERE email='" + email + "';";
+		String query = "SELECT * FROM users WHERE " + by + "='" + value + "';";
 		ResultSet rs = s.executeQuery(query);
 		
 		String[] attrs = new String[5];
@@ -127,6 +127,19 @@ public class User {
 		Connection c = PSQLConnection.getConnection();
 		Statement s = c.createStatement();
 		String query = String.format("DELETE FROM users WHERE login='" + login + "';");
+		
+		int counter = s.executeUpdate(query);
+		
+		c.close();
+		s.close();
+		
+		return counter!= 0;
+	}
+	
+	public static boolean update(String wat, String value, String login) throws SQLException {
+		Connection c = PSQLConnection.getConnection();
+		Statement s = c.createStatement();
+		String query = String.format("UPDATE users SET " + wat + "='" + value + "' WHERE login='" + login + "';");
 		
 		int counter = s.executeUpdate(query);
 		

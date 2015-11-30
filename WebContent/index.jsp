@@ -33,7 +33,10 @@
 						<input type="hidden" name="login" value=${user.getAttr("login")} >
 						<button type="submit" class="delete">Delete</button>
 					</form>
-					<a class="edit-user" href="#">Edit</a>
+					<form method="get" action="Update">
+						<input type="hidden" name="login" value=${user.getAttr("login")} >
+						<button type="submit" class="edit-user">Update</button>
+					</form>
 				</div>
 			</c:if>
 		</div>
