@@ -26,10 +26,13 @@
 				Full name: ${user.getAttr("fullname")}
 				<br/>
 				E-mail: ${user.getAttr("email")}
-			</div>		
+			</div>
 			<c:if test = "${role == 'Admin'}">
 				<div class="edit">
-					<a class="delete" href="#">Delete</a>
+					<form method="get" action="Delete">
+						<input type="hidden" name="login" value=${user.getAttr("login")} >
+						<button type="submit" class="delete">Delete</button>
+					</form>
 					<a class="edit-user" href="#">Edit</a>
 				</div>
 			</c:if>

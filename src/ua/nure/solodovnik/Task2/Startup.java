@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Startup
  */
-@WebServlet("/index")
+@WebServlet("")
 public class Startup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

@@ -17,38 +17,25 @@ import javax.servlet.http.HttpSession;
 public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public SignUp() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		User u = new User();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		try {
-			if (u.create(User.getSignUpParams(request))) {
+			if (User.create(User.getSignUpParams(request))) {
 				HttpSession session = request.getSession(false);
-				session.setAttribute("fullname", session.getAttribute("fullname"));
-				session.setAttribute("role", u.getAttr("isAdmin") == "true" ? "Admin" : "User");
+				//User u = User.findUser(session.getAttribute("fullname").toString());
+				//session.setAttribute("fullname", session.getAttribute("fullname"));
+				//session.setAttribute("role", u.getAttr("isAdmin").equals("t") ? "Admin" : "User");
 				session.setAttribute("allUsers", User.getAll());
 				response.sendRedirect("index.jsp");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

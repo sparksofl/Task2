@@ -79,10 +79,12 @@ input[type='submit'] {
 
 .edit-user {
 	color: #1297E0;
+	position: relative;
 }
 
 .delete {
 	color: #D73C2C;
+	position: relative;
 }
 
 .new {

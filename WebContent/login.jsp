@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="login-form">
-		<form action="SingIn" method="POST">
+		<form action="SignIn" method="POST">
 			<input type="text" name="email" placeholder="E-mail"/>
 			<input type="password" name="password" placeholder="Password"/>
 			<input type="submit" value="Log In" />

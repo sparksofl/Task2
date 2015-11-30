@@ -10,27 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 
 public class User {
 	private HashMap<String, String> attrs = new HashMap<String, String>();
-	// private boolean isAdmin;
 	
 	public User() {}
 	
 	public User(String[] params) {
-		String[] temp = params.length > 2 ? signupParams : loginParams;
+		String[] temp = signupParams;
 		for (int i = 0; i < params.length; i++) {
 			attrs.put(temp[i], params[i]);
 		}
-		// attrs.put("isAdmin", "false");
-		//isAdmin = false;
 	}
 	
-	private static String[] loginParams = {"email", "password"};
 	private static String[] signupParams = {"login", "password", "fullname", "email", "isAdmin"};
-	//private static String[] defaultParams = {"login", "password", "fullname", "email"};
-	
-	public static String[] getLoginParams(HttpServletRequest request) {
-		return getParams(request, loginParams);
-	}
-	
+		
 	public static String[] getSignUpParams(HttpServletRequest request) {
 		return getParams(request, signupParams);
 	}
@@ -119,10 +110,23 @@ public class User {
 //		}
 //	}
 	
-	public boolean create(String[] params) throws SQLException {
+	public static boolean create(String[] params) throws SQLException {
 		Connection c = PSQLConnection.getConnection();
 		Statement s = c.createStatement();
 		String query = String.format("INSERT INTO users VALUES ('%s', '%s', '%s', '%s', false);", params[0], params[1], params[2], params[3]);
+		
+		int counter = s.executeUpdate(query);
+		
+		c.close();
+		s.close();
+		
+		return counter!= 0;
+	}
+	
+	public static boolean delete(String login) throws SQLException {
+		Connection c = PSQLConnection.getConnection();
+		Statement s = c.createStatement();
+		String query = String.format("DELETE FROM users WHERE login='" + login + "';");
 		
 		int counter = s.executeUpdate(query);
 		
