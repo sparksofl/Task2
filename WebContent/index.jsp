@@ -28,24 +28,22 @@
 				<br/>
 				E-mail: ${user.getAttr("email")}
 			</div>
-			<c:if test = "${role == 'Admin'}">
-				<div class="edit">
+			<div class="edit">
+				<c:if test = "${role == 'Admin'}">
 					<c:if test = "${fullname != user.getAttr('fullname')}">
 						<form method="get" action="Delete">
-							<input type="hidden" name="login" value=${user.getAttr("login")} >
+							<input type="hidden" name="login" value=${user.getAttr("login")} />
 							<button type="submit" class="delete">Delete</button>
 						</form>
 					</c:if>
-					<h1>${fullname}</h1>
-					<h1>${user.getAttr('fullname')}</h1>
-					<c:if test = "${fullname == user.getAttr('fullname') || role == 'Admin'}">
-						<form method="get" action="Update">
-							<input type="hidden" name="login" value=${user.getAttr("login")} >
-							<button type="submit" class="edit-user">Update</button>
-						</form>
-					</c:if>
-				</div>
-			</c:if>
+				</c:if>
+				<c:if test = "${(role == 'Admin') || fullname == user.getAttr('fullname')}">
+					<form method="get" action="Update">
+						<input type="hidden" name="login" value=${user.getAttr("login")} />
+						<button type="submit" class="edit-user">Update</button>
+					</form>
+				</c:if>
+			</div>
 		</div>
 	</c:forEach>
 

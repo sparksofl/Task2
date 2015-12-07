@@ -1,5 +1,6 @@
 body {
 	line-height: 30px;
+	font-family: 'Open Sans';
 }
 
 form {
@@ -52,7 +53,6 @@ input[type='submit'] {
 	margin: 20px;
 	padding: 20px;
 	display: table-cell;
-	border: 1px solid rgba(210, 210, 210, 0.9);
 }
 
 .info {
@@ -62,7 +62,6 @@ input[type='submit'] {
 
 .edit {
 	width: 50px;
-	border-left: 0;
 	vertical-align: middle;
     line-height: 40px;
     text-decoration: none;
@@ -71,6 +70,7 @@ input[type='submit'] {
 .user {
 	margin: 20px;
 	display: table;
+	border: 1px solid rgba(210, 210, 210, 0.9);
 }
 
 .current {

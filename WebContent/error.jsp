@@ -5,17 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="main.css"/>
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="error.jsp" />
-	<div class="login-form">
-		<form action="SignIn" method="POST">
-			<input type="text" name="email" placeholder="E-mail"/>
-			<input type="password" name="password" placeholder="Password"/>
-			<input type="submit" value="Log In" />
-		</form>
+	<div class="error">
+		<c:if test="${invalid}">
+		    <span>${message}</span>
+		</c:if>
 	</div>
 </body>
 </html>

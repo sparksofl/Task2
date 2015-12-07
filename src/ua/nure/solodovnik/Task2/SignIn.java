@@ -29,11 +29,13 @@ public class SignIn extends HttpServlet {
 			System.out.println("servlet email" + User.getParam(request, "email"));
 			if (!u.passIsCorrect(User.getParam(request, "password"), User.getParam(request, "email"))) {
 				request.setAttribute("invalid", true);
+				request.setAttribute("message", "Incorrect login or password");
 				doGet(request, response);
 				return;
 			} else {
 				HttpSession session = request.getSession();
 				session.setAttribute("fullname", u.getAttr("fullname"));
+				session.setAttribute("login", u.getAttr("login"));
 				session.setAttribute("role", u.getAttr("isAdmin").equals("t") ? "Admin" : "User");
 				session.setAttribute("allUsers", User.getAll());
 				response.sendRedirect("index.jsp");
