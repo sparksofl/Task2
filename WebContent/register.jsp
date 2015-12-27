@@ -16,10 +16,10 @@
 		</c:if>
 	</div>
 	<form method="post" action="SignUp">
-        <input type="text" name="login" placeholder="Username" required="required" /><br/>
-        <input type="password" name="password" placeholder="Password" required="required" /><br/>
-        <input id="fname" type="text" name="fullname" placeholder="Full name" /><br/>
-        <input id="email" type="email" name="email" placeholder="E-mail" required="required" /><br/>
+        <input type="text" name="login" placeholder="<fmt:message key="label.username"></fmt:message>" required="required" /><br/>
+        <input type="password" name="password" placeholder="<fmt:message key="label.password"></fmt:message>" required="required" /><br/>
+        <input id="fname" type="text" name="fullname" placeholder="<fmt:message key="label.full_name"></fmt:message>" /><br/>
+        <input id="email" type="email" name="email" placeholder="<fmt:message key="label.email"></fmt:message>" required="required" /><br/>
         <input type="submit" value="Sing Up" />
     </form>
 </body>

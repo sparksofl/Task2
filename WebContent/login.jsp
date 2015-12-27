@@ -12,9 +12,9 @@
 	<jsp:include page="error.jsp" />
 	<div class="login-form">
 		<form action="SignIn" method="POST">
-			<input type="text" name="email" placeholder="E-mail"/>
-			<input type="password" name="password" placeholder="Password"/>
-			<input type="submit" value="Log In" />
+			<input type="text" name="email" placeholder="<fmt:message key="label.email"></fmt:message>"/>
+			<input type="password" name="password" placeholder="<fmt:message key="label.password"></fmt:message>"/>
+			<input type="submit" value="<fmt:message key="label.login"></fmt:message>" />
 		</form>
 	</div>
 </body>
