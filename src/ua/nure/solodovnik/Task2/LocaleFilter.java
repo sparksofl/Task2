@@ -13,12 +13,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
-
 @WebFilter(filterName="localeFilter", urlPatterns = {"/*"})
 public class LocaleFilter implements Filter {
-	private static final Logger LOG = Logger.getLogger(LocaleFilter.class);
-
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
@@ -32,7 +28,6 @@ public class LocaleFilter implements Filter {
 			}
 			session.setAttribute("currentLocale", locale.getLanguage());
 		}	
-		LOG.info("current locale ==> " + session.getAttribute("currentLocale"));
 		chain.doFilter(request, response);
 	}
 

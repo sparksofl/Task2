@@ -10,19 +10,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import org.apache.log4j.Logger;
-
 @WebFilter(filterName="encodingFilter", urlPatterns = {"/*"})
 public class EncodingFilter implements Filter {
-	
-	private static final Logger LOG = Logger.getLogger(EncodingFilter.class);
-
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		LOG.info("Encoding set");
 		request.setCharacterEncoding("utf-8");
 		chain.doFilter(request, response);
 	}
